@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="show"></div>
+            <div id="errMsg"></div>
             <div class="card">
                 <div class="card-body">
                     <form id="form" action="{{route('album.store')}}" method="POST" enctype="multipart/form-data">@csrf
@@ -83,18 +84,21 @@
 	    	console.log(response);
 	     	$('.show').html(response);
 	     	$("#form")[0].reset(); 
-	     	//$("#errMsg").empty()
+	     	$("#errMsg").empty()
 
 
 	     },
 	    error: function(data) {
-	    	//console.log(data.responseJSON)
-	    	//var error = data.responseJSON;
-	    	//$("#errMsg").empty()
-	    	//$.each(error.errors,function(key,value){
-	    		//$("#errMsg").append('<p class="text-center text-danger">'+value+'</p>');
 
-	    	//});
+            
+	    	//onsole.log(data.responseJSON)
+	    	var error = data.responseJSON;
+	    	$("#errMsg").empty()
+	    	$.each(error.errors,function(key,value){
+	    		
+                $("#errMsg").append('<p class="text-center text-danger">'+value+'</p>');
+
+	    	});
 	    	
 		}
   
@@ -105,3 +109,4 @@
 
 
 </script>
+

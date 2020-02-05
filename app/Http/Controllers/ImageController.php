@@ -20,6 +20,13 @@ class ImageController extends Controller
 
     public function store(Request $request){
 
+        $this->validate($request, [
+
+            'album'=>'required|min:3|max:50',
+            'image'=>'required'
+
+        ]);
+
         $album = Album::create(['name'=>$request->get('album')]);
 
 
