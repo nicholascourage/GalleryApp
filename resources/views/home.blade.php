@@ -17,7 +17,7 @@
                         <input type="file" name="image[]" class="form-control" id="image">
                         <div class="input-group-btn">
                             <button class="btn btn-success btn-add-more" type="button">
-                                Add
+                                Add image
                             </button>
                         </div>
                     </div>
