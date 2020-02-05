@@ -40,5 +40,7 @@ class ImageController extends Controller
 
         }
 
+        return "<div class='alert alert-success'>Album created successfully</div>";
+
     }
 }
