@@ -26,6 +26,14 @@ class ImageController extends Controller
 
     }
 
+    public function show($id){
+
+        $albums = Album::findOrFail($id);
+
+        return view('gallery', compact('albums'));
+
+    }
+
     public function store(Request $request){
 
         $this->validate($request, [

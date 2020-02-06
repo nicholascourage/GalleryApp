@@ -25,3 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/album', 'ImageController@index');
 
 Route::post('/album', 'ImageController@store')->name('album.store');
+
+
+Route::get('albums/{id}', 'Imagecontroller@show');
