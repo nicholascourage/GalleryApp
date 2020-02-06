@@ -15,11 +15,8 @@ Use App\Video;
 Use App\Post;
 Use App\Comment;
 
-Route::get('/', function () {
 
-    return view('welcome');
-
-});
+Route::get('/', 'ImageController@album');
 
 Auth::routes();
 
