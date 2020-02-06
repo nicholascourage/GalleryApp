@@ -28,3 +28,5 @@ Route::post('/album', 'ImageController@store')->name('album.store');
 
 
 Route::get('albums/{id}', 'Imagecontroller@show');
+
+Route::post('image/delete', 'ImageController@destroy')->name('image.delete');

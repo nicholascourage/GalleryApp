@@ -4,12 +4,22 @@
 
 <div class="container">
     <h1>{{$albums->name}} ({{$albums->images->count()}})</h1>
+    @if(Session::has('message'))
+
+        <div class="alert alert-success">{{Session::get('message')}}</div>
+
+    @endif
+    
     <div class="row">
         @foreach($albums->images as $album)
             <div class="col-sm-4">
                 <div class="item">
                     <img src="{{asset('storage/'.$album->name)}}" class="img-thumbnail" style="width:300px">
                 </div>
+                <form action="{{route('image.delete')}}" method="POST">@csrf
+                    <input type="hidden" name="id" value="{{$album->id}}">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
             </div>
         @endforeach    
 
