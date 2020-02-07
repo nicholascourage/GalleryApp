@@ -3,15 +3,57 @@
 @section('content')
 
 <div class="container">
+    @if(Session::has('message'))
+
+    <div class="alert alert-success">{{Session::get('message')}}</div>
+
+@endif
     <div class="row">
         @foreach($albums as $album)
             <div class="col-sm-4">
                 <div class="item">
                     <a href="albums/{{$album->id}}">
-                        <img src="images/img_1.jpg" class="img-thumbnail">
+                        @if(empty($album->image))
+                            <img src="images/img_1.jpg" class="img-thumbnail">
+
+                        @else 
+
+                            <img src="{{asset('storage/'.$album->image)}}" class="img-thumbnail" style="width: 250px; ">
+
+
+                        @endif
                         <a href="albums/{{$album->id}}" class="centered">{{$album->name}}</a>
                     </a>
                 </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$album->id}}">
+                    Add Album Image
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{$album->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="{{route('add.album.image')}}" method="POST" enctype="multipart/form-data">@csrf
+                                <div class="modal-body">
+                                    <input type="file" name="image" class="form-control">
+                                    <input type="hidden" name="id" value="{{$album->id}}">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success">Save changes</button>
+                                </div>
+  
+                            </form>
+                        </div>
+                    </div>
+                </div>                
             </div>
         @endforeach    
 
