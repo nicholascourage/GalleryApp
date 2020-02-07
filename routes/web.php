@@ -25,8 +25,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/album', 'ImageController@index');
 
 Route::post('/album', 'ImageController@store')->name('album.store');
+Route::post('/album/image', 'ImageController@addImage')->name('album.image');
 
 
 Route::get('albums/{id}', 'Imagecontroller@show');
 
 Route::post('image/delete', 'ImageController@destroy')->name('image.delete');
+

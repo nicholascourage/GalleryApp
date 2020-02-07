@@ -84,4 +84,30 @@ class ImageController extends Controller
 
         
     }
+
+    public function addImage(Request $request){
+
+        $albumId = request('id');
+
+        if($request->hasFile('image')){
+
+            foreach($request->file('image') as $image){
+
+                $path = $image->store('uploads', 'public');
+                Image::create([
+
+                    'name' => $path,
+                    'album_id' => $albumId
+    
+                ]);
+
+            }
+
+
+        }
+
+        return redirect()->back()->with('message','Images added successfully!');
+
+
+    }
 }
