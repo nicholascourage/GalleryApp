@@ -10,6 +10,12 @@ Use App\Album;
 
 class ImageController extends Controller
 {
+    public function __construct(){
+
+        $this->middleware('admin', ['only' =>['index', 'addImage', 'destroy', 'store']]);
+
+    }
+
     public function index(){
 
         $images = Image::get();
