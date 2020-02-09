@@ -22,7 +22,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/album', 'ImageController@index');
+Route::get('/album/create', 'ImageController@index');
 
 Route::post('/album', 'ImageController@store')->name('album.store');
 Route::post('/album/image', 'ImageController@addImage')->name('album.image');
