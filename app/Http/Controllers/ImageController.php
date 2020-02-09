@@ -12,7 +12,7 @@ class ImageController extends Controller
 {
     public function __construct(){
 
-        $this->middleware('admin', ['only' =>['index', 'addImage', 'destroy', 'store']]);
+        $this->middleware('admin', ['only' =>['index', 'addImage', 'destroy', 'store', 'albumImage']]);
 
     }
 

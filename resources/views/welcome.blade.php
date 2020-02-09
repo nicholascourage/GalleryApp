@@ -10,10 +10,9 @@
     @endif
 
     <h1>Albums</h1>
-    @if(Auth::check())
+    @if(Auth::check()&&Auth::user()->user_type=='admin')
         <a href="album/create">Create album</a>
     @endif
-    <a href="album/">Create album</a>
 
     <div class="row">
         @foreach($albums as $album)
@@ -34,9 +33,9 @@
 
                 </div>
                 <!-- Button trigger modal -->
-                @if(Auth::check())
+                @if(Auth::check()&&Auth::user()->user_type=='admin')
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$album->id}}">
-                    Add Album Image
+                    Change Album Image
                 </button>
                 @endif
                 <!-- Modal -->

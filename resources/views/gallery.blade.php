@@ -21,9 +21,12 @@
                 </div>
 
                 <!-- Button trigger modal -->
+                @if(Auth::check()&&Auth::user()->user_type=='admin')
+
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$album->id}}">
                     Delete
                 </button>
+                @endif
                 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal{{$album->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
