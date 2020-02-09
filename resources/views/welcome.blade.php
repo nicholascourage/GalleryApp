@@ -5,9 +5,16 @@
 <div class="container">
     @if(Session::has('message'))
 
-    <div class="alert alert-success">{{Session::get('message')}}</div>
+        <div class="alert alert-success">{{Session::get('message')}}</div>
 
-@endif
+    @endif
+
+    <h1>Albums</h1>
+    @if(Auth::check())
+        <a href="album/create">Create album</a>
+    @endif
+    <a href="album/">Create album</a>
+
     <div class="row">
         @foreach($albums as $album)
             <div class="col-sm-4">
@@ -18,12 +25,13 @@
 
                         @else 
 
-                            <img src="{{asset('storage/'.$album->image)}}" class="img-thumbnail" style="width: 250px; ">
+                            <img src="{{asset('storage/'.$album->image)}}" class="img-thumbnail" style="width:250px;">
 
 
                         @endif
-                        <a href="albums/{{$album->id}}" class="centered">{{$album->name}}</a>
                     </a>
+                    <a href="albums/{{$album->id}}" class="centered">{{$album->name}}</a>
+
                 </div>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$album->id}}">
